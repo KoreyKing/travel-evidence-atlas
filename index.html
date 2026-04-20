@@ -1,0 +1,1670 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>小红书证据旅行图志</title>
+    <style>
+      :root {
+        --paper: #f5efe4;
+        --paper-strong: #fbf8f1;
+        --ink: #18332d;
+        --ink-soft: #4c5d57;
+        --ink-faint: #7f8e87;
+        --line: rgba(24, 51, 45, 0.14);
+        --line-strong: rgba(24, 51, 45, 0.24);
+        --shadow: 0 28px 60px rgba(24, 51, 45, 0.1);
+        --shadow-soft: 0 16px 32px rgba(24, 51, 45, 0.07);
+        --copper: #9a6a49;
+        --copper-soft: rgba(154, 106, 73, 0.12);
+        --guizhou: #627860;
+        --yunnan: #7a8760;
+        --guangxi: #4a7275;
+        --northwest: #8f6d4d;
+        --font-display: "Iowan Old Style", "Palatino Linotype", "Book Antiqua",
+          Baskerville, "Times New Roman", serif;
+        --font-body: "Avenir Next", "PingFang SC", "Hiragino Sans GB",
+          "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+        --max-width: 1420px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: var(--font-body);
+        color: var(--ink);
+        background:
+          radial-gradient(circle at 20% 10%, rgba(154, 106, 73, 0.08), transparent 24rem),
+          radial-gradient(circle at 82% 18%, rgba(74, 114, 117, 0.1), transparent 26rem),
+          linear-gradient(180deg, #f8f4ec 0%, var(--paper) 45%, #f2ecdf 100%);
+        min-height: 100vh;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        opacity: 0.32;
+        background-image:
+          linear-gradient(rgba(24, 51, 45, 0.03) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(24, 51, 45, 0.03) 1px, transparent 1px),
+          radial-gradient(circle at center, rgba(255, 255, 255, 0.46) 0 1px, transparent 1px);
+        background-size: 120px 120px, 120px 120px, 12px 12px;
+        background-position: 0 0, 0 0, 0 0;
+        mix-blend-mode: multiply;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .page-shell {
+        position: relative;
+        max-width: var(--max-width);
+        margin: 0 auto;
+        padding: 28px clamp(18px, 3vw, 44px) 72px;
+      }
+
+      .page-shell::before {
+        content: "";
+        position: absolute;
+        inset: 22px clamp(12px, 2vw, 20px) auto;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent 0,
+          rgba(24, 51, 45, 0.24) 18%,
+          rgba(24, 51, 45, 0.08) 82%,
+          transparent 100%
+        );
+      }
+
+      .hero {
+        position: relative;
+        display: grid;
+        grid-template-columns: minmax(0, 1.55fr) minmax(320px, 0.95fr);
+        gap: 36px;
+        padding: clamp(34px, 6vw, 78px) 0 40px;
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        right: 8%;
+        top: 18px;
+        width: clamp(140px, 18vw, 260px);
+        height: clamp(140px, 18vw, 260px);
+        border-radius: 50%;
+        background:
+          radial-gradient(circle at 50% 50%, rgba(154, 106, 73, 0.16), transparent 60%),
+          radial-gradient(circle at 52% 52%, rgba(24, 51, 45, 0.08), transparent 72%);
+        filter: blur(0.5px);
+        opacity: 0.9;
+      }
+
+      .hero-copy {
+        position: relative;
+        z-index: 1;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 8px 14px;
+        border: 1px solid var(--line-strong);
+        border-radius: 999px;
+        background: rgba(251, 248, 241, 0.72);
+        color: var(--ink-soft);
+        font-size: 0.78rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      .eyebrow::before {
+        content: "";
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--copper);
+      }
+
+      .hero-title {
+        margin: 18px 0 18px;
+        font-family: var(--font-display);
+        font-size: clamp(3.1rem, 8vw, 7.2rem);
+        line-height: 0.9;
+        letter-spacing: -0.05em;
+        max-width: 10ch;
+      }
+
+      .hero-title em {
+        display: block;
+        font-style: normal;
+        color: var(--copper);
+      }
+
+      .hero-deck {
+        max-width: 56ch;
+        margin: 0;
+        color: var(--ink-soft);
+        font-size: 1.04rem;
+        line-height: 1.85;
+      }
+
+      .hero-ribbon {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        margin-top: 26px;
+        padding: 12px 16px;
+        border-left: 4px solid var(--copper);
+        background: linear-gradient(90deg, rgba(154, 106, 73, 0.14), rgba(154, 106, 73, 0.04));
+        box-shadow: var(--shadow-soft);
+        color: var(--ink);
+        font-size: 0.95rem;
+      }
+
+      .hero-aside {
+        position: relative;
+        z-index: 1;
+        padding: 24px;
+        border: 1px solid var(--line-strong);
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.44)),
+          rgba(251, 248, 241, 0.88);
+        backdrop-filter: blur(16px);
+        box-shadow: var(--shadow);
+      }
+
+      .hero-aside::before {
+        content: "Field Notes / 2026";
+        position: absolute;
+        right: 16px;
+        top: 14px;
+        color: rgba(24, 51, 45, 0.3);
+        font-size: 0.72rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .aside-title {
+        margin: 0 0 18px;
+        font-family: var(--font-display);
+        font-size: 1.5rem;
+        letter-spacing: -0.02em;
+      }
+
+      .metric-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        margin-bottom: 20px;
+      }
+
+      .metric {
+        padding: 16px 14px;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.5);
+      }
+
+      .metric strong {
+        display: block;
+        font-family: var(--font-display);
+        font-size: 2.1rem;
+        line-height: 1;
+        margin-bottom: 6px;
+      }
+
+      .metric span {
+        color: var(--ink-soft);
+        font-size: 0.9rem;
+      }
+
+      .method-list {
+        display: grid;
+        gap: 12px;
+      }
+
+      .method-item {
+        padding-top: 12px;
+        border-top: 1px dashed var(--line-strong);
+      }
+
+      .method-item strong {
+        display: block;
+        margin-bottom: 4px;
+        font-size: 0.92rem;
+      }
+
+      .method-item span {
+        display: block;
+        color: var(--ink-soft);
+        line-height: 1.7;
+        font-size: 0.92rem;
+      }
+
+      .region-nav {
+        position: sticky;
+        top: 12px;
+        z-index: 8;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin: 10px 0 44px;
+        padding: 14px;
+        border: 1px solid var(--line);
+        background: rgba(248, 244, 236, 0.8);
+        backdrop-filter: blur(16px);
+        box-shadow: 0 18px 36px rgba(24, 51, 45, 0.08);
+      }
+
+      .nav-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 14px;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.56);
+        text-decoration: none;
+        transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+      }
+
+      .nav-link:hover,
+      .nav-link:focus-visible {
+        transform: translateY(-2px);
+        border-color: var(--line-strong);
+        background: rgba(255, 255, 255, 0.92);
+        outline: none;
+      }
+
+      .nav-link i {
+        width: 11px;
+        height: 11px;
+        border-radius: 50%;
+        background: var(--accent, var(--copper));
+        box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent, var(--copper)) 12%, transparent);
+      }
+
+      .nav-link b {
+        font-weight: 600;
+      }
+
+      .nav-link span {
+        color: var(--ink-faint);
+        font-size: 0.88rem;
+      }
+
+      .atlas-main {
+        display: grid;
+        gap: 52px;
+      }
+
+      .region-section {
+        position: relative;
+        display: grid;
+        gap: 22px;
+        scroll-margin-top: 94px;
+      }
+
+      .section-head {
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr) minmax(220px, 0.9fr);
+        gap: 18px;
+        align-items: end;
+        padding-bottom: 18px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .section-index {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 54px;
+        height: 54px;
+        border-radius: 50%;
+        border: 1px solid var(--line-strong);
+        font-family: var(--font-display);
+        font-size: 1.3rem;
+        color: var(--accent, var(--copper));
+        background: rgba(255, 255, 255, 0.4);
+      }
+
+      .section-kicker {
+        color: var(--ink-faint);
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        font-size: 0.75rem;
+        margin-bottom: 8px;
+      }
+
+      .section-title {
+        margin: 0;
+        font-family: var(--font-display);
+        font-size: clamp(2rem, 4vw, 3.2rem);
+        letter-spacing: -0.04em;
+      }
+
+      .section-note {
+        margin: 0;
+        color: var(--ink-soft);
+        line-height: 1.8;
+        font-size: 0.96rem;
+      }
+
+      .card-grid {
+        display: grid;
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+        gap: 20px;
+      }
+
+      .atlas-card {
+        grid-column: span 6;
+        position: relative;
+        border: 1px solid var(--line-strong);
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.74), rgba(255, 255, 255, 0.56)),
+          rgba(251, 248, 241, 0.86);
+        box-shadow: var(--shadow-soft);
+        overflow: hidden;
+        transition: transform 240ms ease, box-shadow 240ms ease, border-color 240ms ease;
+      }
+
+      .atlas-card.card--wide {
+        grid-column: span 7;
+      }
+
+      .atlas-card.card--compact {
+        grid-column: span 5;
+      }
+
+      .atlas-card.card--full {
+        grid-column: span 12;
+      }
+
+      .atlas-card[open] {
+        transform: translateY(-6px);
+        box-shadow: var(--shadow);
+        border-color: color-mix(in srgb, var(--accent, var(--copper)) 48%, white);
+      }
+
+      .atlas-card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(135deg, rgba(255, 255, 255, 0.18), transparent 42%),
+          radial-gradient(circle at top right, color-mix(in srgb, var(--accent, var(--copper)) 16%, transparent), transparent 38%);
+        pointer-events: none;
+      }
+
+      .card-topbar {
+        height: 8px;
+        background: linear-gradient(90deg, var(--accent, var(--copper)), rgba(255, 255, 255, 0.36));
+      }
+
+      .card-summary {
+        list-style: none;
+        cursor: pointer;
+        position: relative;
+        display: grid;
+        gap: 18px;
+        padding: 22px 22px 18px;
+      }
+
+      .card-summary::-webkit-details-marker {
+        display: none;
+      }
+
+      .card-summary:focus-visible {
+        outline: 2px solid color-mix(in srgb, var(--accent, var(--copper)) 70%, white);
+        outline-offset: -2px;
+      }
+
+      .card-heading {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .place-chip,
+      .evidence-total {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 11px;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.46);
+        font-size: 0.79rem;
+        color: var(--ink-soft);
+      }
+
+      .place-chip::before {
+        content: "";
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--accent, var(--copper));
+      }
+
+      .place-name {
+        margin: 0;
+        font-family: var(--font-display);
+        font-size: clamp(2rem, 4vw, 3.3rem);
+        line-height: 0.95;
+        letter-spacing: -0.05em;
+      }
+
+      .place-recommendation {
+        margin: 0;
+        max-width: 48ch;
+        color: var(--ink-soft);
+        line-height: 1.85;
+        font-size: 1rem;
+      }
+
+      .fact-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .fact-item {
+        min-height: 118px;
+        padding: 14px;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.48);
+      }
+
+      .fact-item strong {
+        display: inline-block;
+        margin-bottom: 10px;
+        font-size: 0.8rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--ink-faint);
+      }
+
+      .fact-item p {
+        margin: 0;
+        color: var(--ink);
+        line-height: 1.7;
+        font-size: 0.96rem;
+      }
+
+      .card-foot {
+        display: flex;
+        gap: 16px;
+        align-items: start;
+        justify-content: space-between;
+        padding-top: 4px;
+      }
+
+      .crowd-preview {
+        max-width: 42ch;
+      }
+
+      .crowd-preview strong {
+        display: block;
+        margin-bottom: 6px;
+        color: var(--ink-faint);
+        font-size: 0.8rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      .crowd-preview p {
+        margin: 0;
+        color: var(--ink-soft);
+        line-height: 1.7;
+      }
+
+      .expand-hint {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--ink-soft);
+        font-size: 0.92rem;
+      }
+
+      .expand-hint::after {
+        content: "+";
+        display: inline-grid;
+        place-items: center;
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.56);
+        font-size: 1.2rem;
+        transition: transform 180ms ease;
+      }
+
+      .atlas-card[open] .expand-hint::after {
+        transform: rotate(45deg);
+      }
+
+      .card-detail {
+        display: grid;
+        gap: 18px;
+        padding: 0 22px 22px;
+        border-top: 1px dashed var(--line-strong);
+      }
+
+      .detail-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        padding-top: 16px;
+      }
+
+      .detail-block {
+        padding: 14px;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.44);
+      }
+
+      .detail-block h4 {
+        margin: 0 0 10px;
+        font-size: 0.88rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--ink-faint);
+      }
+
+      .detail-block p {
+        margin: 0;
+        line-height: 1.8;
+      }
+
+      .evidence-panel {
+        display: grid;
+        gap: 12px;
+      }
+
+      .evidence-title {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+        padding-top: 4px;
+      }
+
+      .evidence-title h4 {
+        margin: 0;
+        font-family: var(--font-display);
+        font-size: 1.2rem;
+        letter-spacing: -0.02em;
+      }
+
+      .evidence-title span {
+        color: var(--ink-faint);
+        font-size: 0.88rem;
+      }
+
+      .evidence-list {
+        display: grid;
+        gap: 10px;
+      }
+
+      .evidence-link {
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr) auto;
+        gap: 12px;
+        align-items: center;
+        padding: 14px;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.56);
+        text-decoration: none;
+        transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+      }
+
+      .evidence-link:hover,
+      .evidence-link:focus-visible {
+        transform: translateX(4px);
+        border-color: color-mix(in srgb, var(--accent, var(--copper)) 50%, white);
+        background: rgba(255, 255, 255, 0.92);
+        outline: none;
+      }
+
+      .evidence-index {
+        display: inline-grid;
+        place-items: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: color-mix(in srgb, var(--accent, var(--copper)) 16%, white);
+        color: var(--ink);
+        font-family: var(--font-display);
+        font-size: 1.05rem;
+      }
+
+      .evidence-copy strong,
+      .evidence-copy span {
+        display: block;
+      }
+
+      .evidence-copy strong {
+        margin-bottom: 5px;
+        font-size: 0.98rem;
+        line-height: 1.5;
+      }
+
+      .evidence-copy span {
+        color: var(--ink-soft);
+        line-height: 1.7;
+        font-size: 0.9rem;
+      }
+
+      .evidence-arrow {
+        color: var(--ink-faint);
+        font-size: 1.2rem;
+      }
+
+      .methodology {
+        margin-top: 52px;
+        padding: 28px;
+        border: 1px solid var(--line-strong);
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.76), rgba(255, 255, 255, 0.48)),
+          rgba(251, 248, 241, 0.86);
+        box-shadow: var(--shadow-soft);
+      }
+
+      .methodology-head {
+        display: grid;
+        grid-template-columns: minmax(0, 1.15fr) minmax(260px, 0.85fr);
+        gap: 22px;
+        margin-bottom: 18px;
+      }
+
+      .methodology-head h2 {
+        margin: 0 0 10px;
+        font-family: var(--font-display);
+        font-size: clamp(1.9rem, 3vw, 2.8rem);
+        letter-spacing: -0.04em;
+      }
+
+      .methodology-head p {
+        margin: 0;
+        color: var(--ink-soft);
+        line-height: 1.85;
+      }
+
+      .methodology-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .methodology-card {
+        padding: 16px;
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.52);
+      }
+
+      .methodology-card strong {
+        display: block;
+        margin-bottom: 8px;
+        font-size: 0.9rem;
+      }
+
+      .methodology-card p {
+        margin: 0;
+        color: var(--ink-soft);
+        line-height: 1.75;
+        font-size: 0.92rem;
+      }
+
+      .page-note {
+        margin-top: 18px;
+        color: var(--ink-faint);
+        font-size: 0.9rem;
+        line-height: 1.8;
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(20px);
+        animation: rise 720ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      }
+
+      .reveal-delay-1 {
+        animation-delay: 90ms;
+      }
+
+      .reveal-delay-2 {
+        animation-delay: 180ms;
+      }
+
+      .reveal-delay-3 {
+        animation-delay: 270ms;
+      }
+
+      .reveal-delay-4 {
+        animation-delay: 360ms;
+      }
+
+      @keyframes rise {
+        from {
+          opacity: 0;
+          transform: translateY(22px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (max-width: 1120px) {
+        .hero,
+        .methodology-head,
+        .section-head {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-title {
+          max-width: 100%;
+        }
+
+        .section-note {
+          max-width: 68ch;
+        }
+
+        .card-grid {
+          grid-template-columns: repeat(6, minmax(0, 1fr));
+        }
+
+        .atlas-card,
+        .atlas-card.card--wide,
+        .atlas-card.card--compact {
+          grid-column: span 3;
+        }
+
+        .atlas-card.card--full {
+          grid-column: span 6;
+        }
+      }
+
+      @media (max-width: 820px) {
+        .page-shell {
+          padding-inline: 16px;
+        }
+
+        .hero {
+          gap: 20px;
+          padding-top: 28px;
+        }
+
+        .hero-aside {
+          padding: 18px;
+        }
+
+        .metric-grid,
+        .methodology-grid,
+        .fact-grid,
+        .detail-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .card-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .atlas-card,
+        .atlas-card.card--wide,
+        .atlas-card.card--compact,
+        .atlas-card.card--full {
+          grid-column: auto;
+        }
+
+        .card-summary,
+        .card-detail {
+          padding-left: 18px;
+          padding-right: 18px;
+        }
+
+        .card-foot,
+        .evidence-title {
+          flex-direction: column;
+          align-items: start;
+        }
+
+        .evidence-link {
+          grid-template-columns: auto minmax(0, 1fr);
+        }
+
+        .evidence-arrow {
+          display: none;
+        }
+
+        .region-nav {
+          top: 8px;
+          padding: 12px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="hero">
+        <div class="hero-copy reveal">
+          <span class="eyebrow">Evidence-led Travel / May Day</span>
+          <h1 class="hero-title">小红书 <em>证据旅行图志</em></h1>
+          <p class="hero-deck">
+            不是泛攻略，也不是热门榜单，而是把“五一两个人去哪儿更舒服”拆成可比较的证据页面：
+            先扩大样本，再压缩证据，最后把真正值得慢慢逛、慢慢吃、慢慢走的地方留在纸面上。
+          </p>
+          <div class="hero-ribbon">
+            <strong>唯一信源：</strong>
+            <span>所有证据按钮均直链小红书，点击即跳转原始笔记。</span>
+          </div>
+        </div>
+
+        <aside class="hero-aside reveal reveal-delay-1">
+          <h2 class="aside-title">这页怎么被筛出来</h2>
+          <div class="metric-grid" id="metricGrid"></div>
+          <div class="method-list">
+            <div class="method-item">
+              <strong>先扩样本</strong>
+              <span>按地区 × 主题词 × 场景词跑满检索口，避免只被少量热门帖牵着走。</span>
+            </div>
+            <div class="method-item">
+              <strong>再压证据</strong>
+              <span>每个目的地至少保留 3-4 条不同角度的笔记，覆盖景色、漫游、美食与交通。</span>
+            </div>
+            <div class="method-item">
+              <strong>最后才做判断</strong>
+              <span>五一人流只做“相对判断”，更看重体验完整度，而不是追求绝对无人。</span>
+            </div>
+          </div>
+        </aside>
+      </header>
+
+      <nav class="region-nav reveal reveal-delay-2" id="regionNav" aria-label="区域导航"></nav>
+
+      <main class="atlas-main" id="atlasRoot"></main>
+
+      <section class="methodology reveal reveal-delay-4">
+        <div class="methodology-head">
+          <div>
+            <h2>方法与声明</h2>
+            <p>
+              这不是自动更新的数据产品，而是一页经过人工压缩的“旅行证据版面”。
+              页面只展示当前主名单中最有判断价值的证据片段，方便你在同一视觉平面上比较不同区域的旅行体感。
+            </p>
+          </div>
+          <p>
+            页面中的“人流判断”来自小红书正文与评论的交叉线索，强调的是五一期间相对热门线路的松弛度，不是绝对空场承诺。
+          </p>
+        </div>
+        <div class="methodology-grid">
+          <article class="methodology-card">
+            <strong>唯一信源</strong>
+            <p>页面内不出现非小红书链接，证据支持均来自小红书直达笔记。</p>
+          </article>
+          <article class="methodology-card">
+            <strong>筛选维度</strong>
+            <p>景色、街景/步道/河海、美食、交通、五一体感、注意点，六条都要过线。</p>
+          </article>
+          <article class="methodology-card">
+            <strong>阅读方式</strong>
+            <p>先看推荐结论，再看证据按钮；如果一个地方仍让你心动，再点进原帖继续深看。</p>
+          </article>
+        </div>
+        <p class="page-note">
+          注：页面中的统计数字对应本轮调研阶段沉淀下来的样本和证据切片；它们服务于筛选，而不是作为官方旅游数据使用。
+        </p>
+      </section>
+    </div>
+
+    <script>
+      const atlasData = {
+        meta: {
+          title: "小红书证据旅行图志",
+          stats: [
+            { value: "96", label: "组检索口" },
+            { value: "1,596", label: "去重笔记" },
+            { value: "42", label: "前台证据" },
+            { value: "11", label: "最终目的地" },
+          ],
+        },
+        regions: [
+          {
+            id: "guizhou",
+            label: "贵州",
+            accent: "var(--guizhou)",
+            note: "喀斯特秘境和老城烟火并置，适合白天向野、晚上回城。",
+            places: [
+              {
+                layout: "full",
+                name: "安顺",
+                recommendation:
+                  "白天向喀斯特深处走，夜里回古城河边慢逛，是这份名单里最完整的“山水 + 老街”双拼。",
+                scenery:
+                  "铜鼓荡、大圣之眼、牛倒岩和万峰顶把荒野感拉满，适合喜欢地貌张力的人。",
+                roaming:
+                  "安顺古城、三元桥、文庙与沿河咖啡带回城市节奏，夜里不空，但仍留得住松弛。",
+                food:
+                  "老街和河边一带适合边走边吃，串店、咖啡和在地小馆能接上山里回来的情绪。",
+                transport:
+                  "贵阳高铁到安顺很顺；山里的点位较分散，租车或包车的完成度明显更高。",
+                crowdJudgement:
+                  "古城段比大景区更松，真正升温的是徒步线和洞谷打卡点；五一去要默认山线比城线热得多。",
+                crowdPreview: "古城松，徒步线热。",
+                cautions:
+                  "徒步线几乎无遮阴，五一会晒也可能堵；牛倒岩这类点位更偏拍照型，不一定适合所有人。",
+                evidence: [
+                  {
+                    title: "别只去黄果树瀑布，安顺5️⃣个小众秘境太值了",
+                    date: "2025-10-29",
+                    url: "https://www.xiaohongshu.com/search_result/6901d44f0000000005039662?xsec_token=ABSEMBPCCmbe2EZJvkhx5d5zA-kVHM6u8fKv_G1W9iXa8=&xsec_source=",
+                    signal:
+                      "把铜鼓荡、高荡村等秘境串成一条线，明确强调地貌原始感和拍照效果。",
+                  },
+                  {
+                    title: "没有出国，贵州安顺一日游路线强推（附定位）",
+                    date: "2025-03-04",
+                    url: "https://www.xiaohongshu.com/search_result/67c69768000000000d0175c5?xsec_token=ABaek-SIUH8AuSCWGdH52MnYqat-e8mjvJeTgYR6VBi1w=&xsec_source=",
+                    signal:
+                      "补足牛倒岩与万峰顶的导航、车程和拍照限制，更像短途快闪版路线。",
+                  },
+                  {
+                    title: "安顺｜一个人出行的满分徒步方案",
+                    date: "2026-04-05",
+                    url: "https://www.xiaohongshu.com/search_result/69d14448000000002200347a?xsec_token=ABVfIG978PNo9dWjwmALkyqMVXHXiXWHTVgQwu2J4dtO0=&xsec_source=",
+                    signal:
+                      "直接点出假期首日就出现暴晒和堵车，说明五一徒步线会明显升温。",
+                  },
+                  {
+                    title: "绝了！被安顺古城这条老街硬控了",
+                    date: "2026-04-16",
+                    url: "https://www.xiaohongshu.com/search_result/69e0aca2000000002301da2b?xsec_token=AB_jmX0APMQKxNiEZXtKlpgYnbVys-LB52LoJ5ev0_eP8=&xsec_source=",
+                    signal:
+                      "把三元桥、文庙、河边咖啡和老街吃喝接回城市线，证明确实适合夜逛。",
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            id: "yunnan",
+            label: "云南",
+            accent: "var(--yunnan)",
+            note: "偏古镇与湖岸的慢体验，重在住一晚、发一会儿呆，而不是赶场打卡。",
+            places: [
+              {
+                layout: "compact",
+                name: "沙溪",
+                recommendation:
+                  "如果你们更想要‘慢慢走、慢慢吃、慢慢住’，沙溪是这批里最像治愈片场景的地方。",
+                scenery:
+                  "古戏台、玉津桥、溪流、石板路和古老屋檐拼起来，画面是安静的，不靠大场景压人。",
+                roaming:
+                  "寺登街、欧阳大院、南寨门和桥边步线都适合散着走，几乎整个古镇都能靠脚完成。",
+                food:
+                  "不晚小吃店、阿瑞奶奶的店、薄荷咖啡这些点，证明它不是只拍照的空壳古镇。",
+                transport:
+                  "从大理坐滴滴巴士约两小时可直达，属于落地性很好的云南慢住线。",
+                crowdJudgement:
+                  "这组证据反复指向‘不算挤、商业化没那么重、适合静下来’，对五一尤其友好。",
+                crowdPreview: "相对松，重在慢住。",
+                cautions:
+                  "古镇节奏偏慢，不适合想要连续景点刺激的人；如果只留半天，会被压缩得很仓促。",
+                evidence: [
+                  {
+                    title: "以为大理已经够美，直到我去了沙溪❗附机位",
+                    date: "2026-01-15",
+                    url: "https://www.xiaohongshu.com/search_result/6968cf3f000000001a0342c5?xsec_token=ABDMlxpOsCdEX5n0dLrwLJW4i4li6CRuct9MimRLQbfaQ=&xsec_source=",
+                    signal:
+                      "强调没人潮、少商业化、石板路与茶马故事，适合安静停留。",
+                  },
+                  {
+                    title: "听劝！大理旅行至少要留两天给沙溪古镇！！",
+                    date: "2026-02-12",
+                    url: "https://www.xiaohongshu.com/search_result/698d4b3800000000280082a3?xsec_token=ABG8K9cXcKmUzIu2jsvgjAsAWiWGSVL8SJFso76GX_OR8=&xsec_source=",
+                    signal:
+                      "补了玉津桥、古戏台、溪流和古镇气质，连续强化慢生活氛围。",
+                  },
+                  {
+                    title: "沙溪古镇｜跟着《有风的地方》慢慢逛！",
+                    date: "2026-03-19",
+                    url: "https://www.xiaohongshu.com/search_result/69bb6f670000000021005b05?xsec_token=ABTPx8Wu5aBUGh3y11iSzg2wR5LeDVsLnf-Rt0cwkTmyI=&xsec_source=",
+                    signal:
+                      "给出大理直达巴士和两天一夜走法，落地路线最完整。",
+                  },
+                ],
+              },
+              {
+                layout: "wide",
+                name: "抚仙湖",
+                recommendation:
+                  "如果你们更想要湖风、咖啡、栈道和发呆感，它比典型古镇更适合作为五一松弛目的地。",
+                scenery:
+                  "湿地、公园、红沙滩、鱼洞和玻璃感湖水，把‘云南版海边’的想象撑得很满。",
+                roaming:
+                  "一半沙滩一半栈道，湖边咖啡和环湖停靠点很多，适合白天散走、傍晚坐住。",
+                food:
+                  "证据更偏湖边咖啡、渔庄和轻餐，不是硬核美食城，但休闲吃喝完整。",
+                transport:
+                  "昆明自驾一小时左右最顺，环湖建议顺时针，东线景色普遍被认为更能打。",
+                crowdJudgement:
+                  "比洱海线更松，但并不是完全空场；季节差异大，体验会受时令和天气影响。",
+                crowdPreview: "比洱海线松，季节波动大。",
+                cautions:
+                  "不自驾会损失很多环湖自由度；冬夏景致差异明显，想看樱花、海鸥或咖啡线要挑季节。",
+                evidence: [
+                  {
+                    title: "抚仙湖chill的地方都是最美的（live合集……）",
+                    date: "2026-02-24",
+                    url: "https://www.xiaohongshu.com/search_result/699d0a0d000000001a01f291?xsec_token=ABcIfGYRi4E4ZYWuGadcmRKoENNlaj8Ea8GUgkWzHgveo=&xsec_source=",
+                    signal:
+                      "用咖啡、半日岛和湖边停留点把松弛氛围直接做成目录。",
+                  },
+                  {
+                    title: "以为洱海已经够美了，直到去了抚仙湖🏖️",
+                    date: "2026-04-03",
+                    url: "https://www.xiaohongshu.com/search_result/69cf7a50000000001d01c49f?xsec_token=ABnxuPlSm8R3SvOaH7BxuJDheSyR3xawZ3qM7jYgedi7M=&xsec_source=",
+                    signal:
+                      "明确一日线是湿地、红沙滩、禄充和明星鱼洞，兼顾沙滩与栈道。",
+                  },
+                  {
+                    title: "抚仙湖自驾全攻略｜一天一夜极限环湖",
+                    date: "2026-04-04",
+                    url: "https://www.xiaohongshu.com/search_result/69cff34d000000001a03086a?xsec_token=ABnxuPlSm8R3SvOaH7BxuJDgcEpvuSClCGtqEVRmoQojc=&xsec_source=",
+                    signal:
+                      "把顺时针环湖和东西线差异讲清楚，更适合自驾情侣照抄。",
+                  },
+                  {
+                    title: "云南玉溪抚仙湖一日游美景📷攻略｜附路线",
+                    date: "2026-01-05",
+                    url: "https://www.xiaohongshu.com/search_result/695a90f4000000001d03a8c7?xsec_token=ABoHex7Gk0smTj_ebUTbQlMZgjj3Qe2sOCx7SPcl5SAmU=&xsec_source=",
+                    signal:
+                      "补了昆明出发时长与小众精华线，验证周末落地性不错。",
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            id: "guangxi",
+            label: "广西",
+            accent: "var(--guangxi)",
+            note: "河岸、边境、夜游和吃喝是主线，适合年轻人双人松弛出逃。",
+            places: [
+              {
+                layout: "wide",
+                name: "河池",
+                recommendation:
+                  "如果你想要真正低估的山水目的地，河池比很多广西热门城市更有‘野生感’和惊喜。",
+                scenery:
+                  "都安天窗、三门海、小三峡、坡豪湖和九灵天窗把喀斯特水系的层次拉得很开。",
+                roaming:
+                  "罗城古村、白裤瑶寨和湖边栈道把‘不是只有自然景’这件事补得很完整。",
+                food:
+                  "多条笔记直接把河池写成美食美酒性价比城市，本地评论也补了罗城好吃线索。",
+                transport:
+                  "自驾体验最好，不开车会明显受限；部分评论也明确提醒公共交通不算强。",
+                crowdJudgement:
+                  "是这份名单里‘人少感’最强的一档，反向旅行和免费景点的信号都很集中。",
+                crowdPreview: "人少感强，自驾最值。",
+                cautions:
+                  "洞线和地下长廊类点位要关注开放情况与向导问题；不建议只靠公共交通硬冲。",
+                evidence: [
+                  {
+                    title: "广西河池📍一个严重被低估的城市！！！",
+                    date: "2026-04-10",
+                    url: "https://www.xiaohongshu.com/search_result/69d912f4000000002102e633?xsec_token=ABacC11wG-2SXmSz4XeJ_0atBvBCnp8gQaA8e5dT_AMt0=&xsec_source=",
+                    signal:
+                      "都安天窗、三门海、小三峡和第一湾都被点名，山水密度很高。",
+                  },
+                  {
+                    title: "国庆反向旅行｜广西河池太值得啦！",
+                    date: "2025-10-05",
+                    url: "https://www.xiaohongshu.com/search_result/68e1be760000000007035d07?xsec_token=ABkWJLbcFUqRfjweNvTjQInWNTsOe8VYS9lF2VNFa8YvI=&xsec_source=",
+                    signal:
+                      "直接说明反向旅行、人少和免费景点多，但也提醒更适合自驾。",
+                  },
+                  {
+                    title: "⚱️|河池还有这样的小众古村——罗城大勒洞屯",
+                    date: "2026-04-07",
+                    url: "https://www.xiaohongshu.com/search_result/69d4c791000000001d01aacd?xsec_token=ABSZJ_viQaN68GnHcFBgwMcydIyvFfvEXnNHKt0iiQZqU=&xsec_source=",
+                    signal:
+                      "古村一条线补足漫游价值，还出现‘节假日期间几乎没人’的明确信号。",
+                  },
+                  {
+                    title: "广西河池的地下长廊给我狠狠的上了一课。",
+                    date: "2025-07-24",
+                    url: "https://www.xiaohongshu.com/search_result/688217d2000000001c033a77?xsec_token=ABf7kZA_cXcC2nd1C--HOJOA4Azg0agqy_YVOLIM5zaBI=&xsec_source=",
+                    signal:
+                      "评论区出现‘是否关闭’与‘是否需要向导’，提醒洞线要留安全冗余。",
+                  },
+                ],
+              },
+              {
+                layout: "compact",
+                name: "崇左",
+                recommendation:
+                  "边境感、瀑布、夜市和山水公路叠在一起，很适合想看景又不想一路都在排队的人。",
+                scenery:
+                  "德天、明仕田园、龙宫仙境和靖西系山水，把崇左一带的边境画面感撑得很稳。",
+                roaming:
+                  "崇左市区不算惊艳，但夜市、小吃街和沿途慢走能把白天看景后的情绪接住。",
+                food:
+                  "柠檬鸭、太子螺蛳粉、鱼生、烤卷粉都在证据里出现，吃不会太弱。",
+                transport:
+                  "南宁转崇左南高铁很方便，但景点分散，真正舒服的玩法还是租车或自驾。",
+                crowdJudgement:
+                  "相对桂林主线更松，但德天这类景点仍要看水量和节假日时段。",
+                crowdPreview: "相对桂林线更松。",
+                cautions:
+                  "边境区域要带身份证；五一若看德天，需要接受枯水与丰水的观感差异。",
+                evidence: [
+                  {
+                    title: "五一去广西崇左会得到…",
+                    date: "2026-04-12",
+                    url: "https://www.xiaohongshu.com/search_result/69db02e10000000022024fc6?xsec_token=ABB17a5YxJrgGySfPrFQKOv3SEpD8w2NcEwxNLJu_ovgE=&xsec_source=",
+                    signal:
+                      "给出南宁转崇左南、高铁时长、市区夜逛和鱼生螺蛳粉的实拍路线。",
+                  },
+                  {
+                    title: "广西崇左 | 反季旅游的小众宝藏地✨",
+                    date: "2025-11-06",
+                    url: "https://www.xiaohongshu.com/search_result/690cb77f000000000703a50e?xsec_token=ABmgRQA2kdcdTmfuU6IuieslF9J46HILJKCuqCGDXI__Q=&xsec_source=",
+                    signal:
+                      "强调德天反季更安静，能把水声和边境感听得更完整。",
+                  },
+                  {
+                    title: "崇左｜藏在广西的边境秘境，比桂林更小众🌿",
+                    date: "2026-01-30",
+                    url: "https://www.xiaohongshu.com/search_result/697c38810000000028020394?xsec_token=ABb2NSHQCHKmNs7wWDaN4qNh4Mjw6wo4PJdxjo2kbqK78=&xsec_source=",
+                    signal:
+                      "三天核心线补足龙宫仙境、市区夜市、证件要求和自驾建议。",
+                  },
+                  {
+                    title: "比桂林崇左更美❗️这才是来广西正确打开方式",
+                    date: "2025-08-30",
+                    url: "https://www.xiaohongshu.com/search_result/68b2c377000000001d01e308?xsec_token=ABJA4NoIwZlSSlyMTBseXgfUhF8TaEuQvgRFbNsbeN32I=&xsec_source=",
+                    signal:
+                      "虽然正文短，但把靖西一带山水再度拉进证据池，适合作为景色补充。",
+                  },
+                ],
+              },
+              {
+                layout: "full",
+                name: "柳州",
+                recommendation:
+                  "它是这页里最适合年轻情侣‘逛吃拍夜景’的城市型目的地，节奏轻、吃得稳、河边线很漂亮。",
+                scenery:
+                  "柳江、水上公交、窑埠古镇、文庙、马鞍山和河堤夜景组成了一条非常完整的城市风景线。",
+                roaming:
+                  "河堤、公园、夜游路线和城中小街都适合长时间步行，是典型的 citywalk 友好城市。",
+                food:
+                  "螺蛳粉、猪脚粉、五星美食街、夜市和河边一带都被频繁提及，吃的维度很强。",
+                transport:
+                  "市区景点集中、水上公交可玩，很多点免费，轻装走就行。",
+                crowdJudgement:
+                  "夜游线有明确‘人少且精华’的信号，是五一想避开大挤兑的城市型答案。",
+                crowdPreview: "夜游线仍有空隙。",
+                cautions:
+                  "如果你们完全不爱城市漫游，只追求自然大景，柳州会比边境线少一点野味。",
+                evidence: [
+                  {
+                    title: "广西柳州｜特种兵两天一夜Citywalk图文攻略",
+                    date: "2026-03-10",
+                    url: "https://www.xiaohongshu.com/search_result/69aa6a60000000001a022644?xsec_token=ABu8SADKPT1PoECt_YuXElxMJK52pX-dZs1h6Q0vB541U=&xsec_source=",
+                    signal:
+                      "把水上公交、窑埠、文庙、马鞍山和美食街一次串齐，完成度很高。",
+                  },
+                  {
+                    title: "拒绝人挤人！人少且精华的柳州夜游路线推",
+                    date: "2025-05-02",
+                    url: "https://www.xiaohongshu.com/search_result/6814d99a0000000022024559?xsec_token=ABT0z0MpgMbKYBMVaM2aFM6hk5UMCuadzeDB5_tgEbyIg=&xsec_source=",
+                    signal:
+                      "直接写明‘人少且精华’，而且夜游路线临河、凉快、能一路吃过去。",
+                  },
+                  {
+                    title: "柳州三天两夜citywalk 吃喝拍照打卡攻略！！！",
+                    date: "2026-04-16",
+                    url: "https://www.xiaohongshu.com/search_result/69e0cefc000000002102fdca?xsec_token=AB_jmX0APMQKxNiEZXtKlpgWR4jPSJctDcWj1oQDguy5A=&xsec_source=",
+                    signal:
+                      "三天两夜版本把游船、江景、古建和吃喝拍照都补足了。",
+                  },
+                  {
+                    title: "柳州的宝藏河堤公园⛲️好city啊！！！📷",
+                    date: "2024-08-26",
+                    url: "https://www.xiaohongshu.com/search_result/66cc0e18000000001d018608?xsec_token=ABj-uiWZ7TgBPyD8IBKJgm6sBpN0dZxCrFgVYRzJspwfI=&xsec_source=",
+                    signal:
+                      "河堤公园和傍晚柳江边散步被单独验证，证明水边漫游是真成立的。",
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            id: "northwest",
+            label: "西北",
+            accent: "var(--northwest)",
+            note: "不看大环线打卡，而把老城、河谷与县城慢生活单独抽出来比较。",
+            places: [
+              {
+                layout: "compact",
+                name: "安康",
+                recommendation:
+                  "陕西里最像‘山水小城 + 河边夜游’的答案，适合从西安周末短逃到一个不那么嘈杂的地方。",
+                scenery:
+                  "汉江、香溪洞、瀛湖和周边水乡把这座城的湿润感和陕南气质撑了起来。",
+                roaming:
+                  "鼓楼夜市、汉江沿岸和城市夜景反复出现，说明它不是只有景点而没有步行线。",
+                food:
+                  "夜市和市区小吃信号稳定，属于可以边走边吃、但不过度网红化的节奏。",
+                transport:
+                  "西安过去方便，市区打车和公交都能跑；往石泉和后柳还有火车与公交补充。",
+                crowdJudgement:
+                  "整体更像周末出逃线，不是五一爆款城，周边景点升温但市区体感仍可控。",
+                crowdPreview: "周末轻热，整体不挤。",
+                cautions:
+                  "安康的魅力需要住一晚以上才成立；如果只闪电打卡，会损失汉江夜景和水乡一面。",
+                evidence: [
+                  {
+                    title: "📍陕西安康｜西安周末遛弯好去处～",
+                    date: "2025-05-06",
+                    url: "https://www.xiaohongshu.com/search_result/6819ced60000000022036b2c?xsec_token=ABs7MYjthuOQFlbomUgf_3bwzZewSYjj-fpmuRe4Oopb4=&xsec_source=",
+                    signal:
+                      "从西安周末出逃视角把汉江游船、鼓楼夜市和两晚节奏都写清了。",
+                  },
+                  {
+                    title: "来安康18次总结的打卡机位…（citywalk篇）",
+                    date: "2025-09-28",
+                    url: "https://www.xiaohongshu.com/search_result/68d8d513000000000e00db37?xsec_token=ABVai4F8oDhzRB_Ad_9OA_eu9UuuMEda9dqWk8U6r2JsY=&xsec_source=",
+                    signal:
+                      "反复提到 citywalk 机位和夜景，说明城市慢逛不是附带项目。",
+                  },
+                  {
+                    title: "安康旅行🎣｜三天两夜攻略：感受陕南小江南",
+                    date: "2026-02-01",
+                    url: "https://www.xiaohongshu.com/search_result/697e6b30000000000e03dc19?xsec_token=ABXmzoveSO1gFg3eIoL7SObGRj7YHkZS2XS0xYi5h5q-A=&xsec_source=",
+                    signal:
+                      "把石泉古镇、后柳水乡、火车与公交方式都补齐了，落地性很强。",
+                  },
+                ],
+              },
+              {
+                layout: "wide",
+                name: "陇南",
+                recommendation:
+                  "如果你想在西北里找一个更温润、更绿、更像‘江南山城’的五一去处，陇南很能打。",
+                scenery:
+                  "官鹅沟、天池、溶洞、瀑布、牧场和茶园让它摆脱了很多人对西北的固定印象。",
+                roaming:
+                  "武都、成县和夜市线补足了人文与县城慢逛，不是只有风景公路。",
+                food:
+                  "瑶寨沟农家饭、阶州夜市、小城烟火在证据里都能找到，不是只剩车窗风景。",
+                transport:
+                  "高铁可达武都站，但景点分散；真正想舒服玩，最好默认自驾或拼车。",
+                crowdJudgement:
+                  "是西北组里‘人少景静不拥挤’信号最集中的目的地之一，尤其适合五一反向走。",
+                crowdPreview: "五月舒适，人流分散。",
+                cautions:
+                  "最佳绿色状态仍受时令影响；如果只靠市区短停，会低估陇南的真正上限。",
+                evidence: [
+                  {
+                    title: "本地人告诉你五一去甘肃陇南三天攻略‼️",
+                    date: "2025-04-30",
+                    url: "https://www.xiaohongshu.com/search_result/681109290000000009016731?xsec_token=ABJ3GdMsp8JtoYW-jHv0JGL050MTw7oqxAILcsjoSpR8g=&xsec_source=",
+                    signal:
+                      "直接回答五一山有没有绿，并给出武都站落地路线与夜市安排。",
+                  },
+                  {
+                    title: "五一去陇南 | 这份攻略直接抄📸附详细机位",
+                    date: "2025-04-21",
+                    url: "https://www.xiaohongshu.com/search_result/6805c83c000000001c036850?xsec_token=ABHia780l2jH2xxWAtj3xHG5O3hG42sn2NG3hk1hYaCDg=&xsec_source=",
+                    signal:
+                      "强调高铁可达但景点分散，清楚说明更适合自驾。",
+                  },
+                  {
+                    title: "谁懂啊！五月陇南才是西北隐藏的江南仙境",
+                    date: "2026-04-10",
+                    url: "https://www.xiaohongshu.com/search_result/69d8b5ea0000000022003f71?xsec_token=AB0DsF6K934pSoDsOMViVP5orPZCghBuJ_tWghaDed0bQ=&xsec_source=",
+                    signal:
+                      "把五月新绿、瀑布、茶园和 15-25 度体感直接钉住了。",
+                  },
+                  {
+                    title: "陇南｜五一人少景美，这几个地方值得去",
+                    date: "2026-04-20",
+                    url: "https://www.xiaohongshu.com/search_result/69e5e66c000000000902f6e8?xsec_token=ABpHmWTRt7CSRO3u3bfIty3W-99wf9RYBR8HBvsZuf7Sk=&xsec_source=",
+                    signal:
+                      "成县、西狭颂、鸡峰山和官鹅沟补足河谷栈道与人文层次。",
+                  },
+                ],
+              },
+              {
+                layout: "compact",
+                name: "天水",
+                recommendation:
+                  "它不是绝对冷门，却是这页里‘人文慢逛 + 真能吃好’最完整的西北小城之一。",
+                scenery:
+                  "麦积山、伏羲庙、玉泉观、小布达拉宫和古城一起把文化密度拉得很高。",
+                roaming:
+                  "市区点位集中，适合 Citywalk，不必强依赖租车就能慢慢走开。",
+                food:
+                  "麻辣烫、面皮夹馍、豆腐脑、浆水酸奶和仿古街小吃让‘吃’变成核心理由。",
+                transport:
+                  "西安到天水高铁约 1.5 小时，城区轨道和步行组合也足够友好。",
+                crowdJudgement:
+                  "不是空城型冷门，但避开最红点位之后，人文慢逛线仍然很稳。",
+                crowdPreview: "不算绝对冷门，走人文线更稳。",
+                cautions:
+                  "如果你极度抗拒稍热一点的城市，它可能不如陇南或安康那样轻；但完成度确实高。",
+                evidence: [
+                  {
+                    title: "天水｜🚄1.5h可达，一座严重被低估的宝藏小城",
+                    date: "2026-03-29",
+                    url: "https://www.xiaohongshu.com/search_result/69c925ea000000002103bcf4?xsec_token=ABmWQ69QEztQn9JBIZKGPcFzf-Eze4eszIsN3r3hJ6VB4=&xsec_source=",
+                    signal:
+                      "两天一夜线把麦积山、古城与高铁 1.5 小时可达讲得非常完整。",
+                  },
+                  {
+                    title: "天水“小布达拉宫”拍啦，麻辣烫吃啦",
+                    date: "2025-04-02",
+                    url: "https://www.xiaohongshu.com/search_result/67ed2426000000000e006dca?xsec_token=ABtXcpEqSEw2pp-mMdmPnjuZoEwJW2tHGbU3CkHrT6O5E=&xsec_source=",
+                    signal:
+                      "直接补强吃的维度，证明天水不只是看石窟和古建。",
+                  },
+                  {
+                    title: "天水｜反向躺平，本地人私藏的玩法玩到爽‼️",
+                    date: "2025-12-16",
+                    url: "https://www.xiaohongshu.com/search_result/69410b61000000001e00ec31?xsec_token=ABNFTOwu5Atioi6SXNS5TijbCIoeg6RJIB_I5DxIqGmuI=&xsec_source=",
+                    signal:
+                      "本地玩法把博物馆、古柏和细节吃法都补齐了，适合慢玩。",
+                  },
+                  {
+                    title: "天水攻略｜伏羲庙到玉泉观，天水Citywalk漫游",
+                    date: "2026-02-01",
+                    url: "https://www.xiaohongshu.com/search_result/697f0ba70000000022030b85?xsec_token=ABUwZ4anJbvtW5qOLZH3csFUJ8CvHZWf7GsApQHqmPUs0=&xsec_source=",
+                    signal:
+                      "进一步证明市区点位集中，适合不租车直接走。",
+                  },
+                ],
+              },
+              {
+                layout: "compact",
+                name: "银川",
+                recommendation:
+                  "如果你们想在西北找一座‘路线清楚、老城好逛、吃饭不费劲’的城市，银川很稳。",
+                scenery:
+                  "鼓楼、玉皇阁、承天寺塔、南薰门和览山把古建与城市轮廓感撑住了。",
+                roaming:
+                  "自强巷、老城区和一日步行线反复出现，是非常典型的老城漫游目的地。",
+                food:
+                  "牛街、拉面、冰煮羊、怀远夜市这条线说明银川的吃喝配套很完整。",
+                transport:
+                  "步行 + 共享电瓶车就能完成大多数精华线，对双人轻装非常友好。",
+                crowdJudgement:
+                  "老城并不空，但没有看到爆挤信号，属于可控的城市型五一去处。",
+                crowdPreview: "老城轻量，不见爆堵。",
+                cautions:
+                  "如果你更想要野外大景，银川不会像陇南那样强；它更适合城市慢游与吃喝。",
+                evidence: [
+                  {
+                    title: "银川 | 老城区Citywalk",
+                    date: "2026-01-17",
+                    url: "https://www.xiaohongshu.com/search_result/696a83ad0000000009039aa0?xsec_token=ABL1gQAb1v5y9Tqv_kHHhIKp3lrIn7FIsSatvj5dhK-eE=&xsec_source=",
+                    signal:
+                      "老城核心点位被清晰框住，鼓楼到南薰门的步线非常明确。",
+                  },
+                  {
+                    title: "银川 ｜ 老城精华一日游 Citywalk路线",
+                    date: "2025-09-06",
+                    url: "https://www.xiaohongshu.com/search_result/68bbc687000000001c031d94?xsec_token=ABSYe5CyQrKGkvJG1v8FEXWNTN9ynitygnCftc95LuJk8=&xsec_source=",
+                    signal:
+                      "把书店、古寺、清真寺和牛街牛羊肉一次串起来了。",
+                  },
+                  {
+                    title: "银川 | ctiy walk 自强巷半日游1日游怎么玩",
+                    date: "2025-08-06",
+                    url: "https://www.xiaohongshu.com/search_result/68933a6400000000230192c5?xsec_token=ABwK9H5P_PVDujWvKQ6boNQ6zoqEzfXQGYxJGhiLY9edU=&xsec_source=",
+                    signal:
+                      "半日游版本强调 2 公里步行尺度，对轻量慢逛非常友好。",
+                  },
+                  {
+                    title: "银川一日Citywalk｜邂逅塞上江南的日与夜",
+                    date: "2025-10-09",
+                    url: "https://www.xiaohongshu.com/search_result/68e7c05f000000000301a5c9?xsec_token=ABa8zGnsFnxxt1PnsGUfixczSnWw0lE4qQ4o8ROX-BYXo=&xsec_source=",
+                    signal:
+                      "把怀远夜市与览山一起补进来，完成日夜转换。",
+                  },
+                ],
+              },
+              {
+                layout: "wide",
+                name: "西宁",
+                recommendation:
+                  "如果你想找一个‘能吃、能逛、还有河边散步线’的西北城市，西宁比很多人想象中完整得多。",
+                scenery:
+                  "大新街、下南关、南山公园和湟水河把城市、清真氛围与河岸绿道连了起来。",
+                roaming:
+                  "城区一日游逻辑很顺，湟水河环线又给了一个真正能散步的收尾选项。",
+                food:
+                  "牛杂、羊肠面、包子、炕锅羊和莫家街都在证据里出现，吃的很稳。",
+                transport:
+                  "城区景点集中，一天能完成主线；绿道更适合骑行或傍晚步行。",
+                crowdJudgement:
+                  "它不是空城，但步行线和吃喝线都可控，只要不把它当纯中转站就会舒服很多。",
+                crowdPreview: "城区不空，但步行线可控。",
+                cautions:
+                  "绿道夜里局部没路灯，南关清真寺和南山公园也要注意实时开放情况。",
+                evidence: [
+                  {
+                    title: "西宁一日游🔥24h打卡7个热门地(不绕路版",
+                    date: "2025-12-09",
+                    url: "https://www.xiaohongshu.com/search_result/69380697000000001e02d443?xsec_token=AB00sLBfB_UM0Y2WVo7KOJ6UXU0omUQxwsHY06dykb92Q=&xsec_source=",
+                    signal:
+                      "一日游直接给到大新街、莫家街、博物馆和南山公园的顺路玩法。",
+                  },
+                  {
+                    title: "暑假旅游去西宁‼️请复制这条一日游路线！",
+                    date: "2025-07-23",
+                    url: "https://www.xiaohongshu.com/search_result/6880d079000000001d00f41e?xsec_token=ABATTb4OojwWQx4iqPOs7EbXXFSDaQNfMxJ7ZABxBFiGE=&xsec_source=",
+                    signal:
+                      "五一早市、牛杂和羊肠面把西宁的吃喝线一下子补强了。",
+                  },
+                  {
+                    title: "西宁市区旅游攻略【无废话版】",
+                    date: "2025-08-01",
+                    url: "https://www.xiaohongshu.com/search_result/688c536c00000000030339d2?xsec_token=AB3eBBztP8HAXc4EhApe3RnVAYwN87BPnrk94Kxmg-duE=&xsec_source=",
+                    signal:
+                      "明确告诉你西宁值得两天慢玩，不只是青甘大环线的中转站。",
+                  },
+                  {
+                    title: "西宁绿道湟水河环线包场体验报告",
+                    date: "2025-05-08",
+                    url: "https://www.xiaohongshu.com/search_result/681cd18d000000001101d7dd?xsec_token=ABhqz5ORly9-5tGCUQVGy1UR8uNHXTsEmGat399fhf1bs=&xsec_source=",
+                    signal:
+                      "湟水河绿道把散步、骑行与夜间风险都说清了，是少见的河边证据。",
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      };
+
+      function escapeHtml(value) {
+        return String(value)
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;")
+          .replace(/'/g, "&#39;");
+      }
+
+      function renderMetrics() {
+        const root = document.getElementById("metricGrid");
+        root.innerHTML = atlasData.meta.stats
+          .map(
+            (item) => `
+              <div class="metric">
+                <strong>${escapeHtml(item.value)}</strong>
+                <span>${escapeHtml(item.label)}</span>
+              </div>
+            `,
+          )
+          .join("");
+      }
+
+      function renderRegionNav() {
+        const nav = document.getElementById("regionNav");
+        nav.innerHTML = atlasData.regions
+          .map(
+            (region) => `
+              <a class="nav-link" href="#region-${escapeHtml(region.id)}" style="--accent:${region.accent}">
+                <i aria-hidden="true"></i>
+                <b>${escapeHtml(region.label)}</b>
+                <span>${region.places.length} 地</span>
+              </a>
+            `,
+          )
+          .join("");
+      }
+
+      function evidenceMarkup(evidence) {
+        return evidence
+          .map(
+            (item, index) => `
+              <a class="evidence-link" href="${escapeHtml(item.url)}" target="_blank" rel="noreferrer">
+                <span class="evidence-index">${String(index + 1).padStart(2, "0")}</span>
+                <span class="evidence-copy">
+                  <strong>${escapeHtml(item.title)}</strong>
+                  <span>${escapeHtml(item.date)} · ${escapeHtml(item.signal)}</span>
+                </span>
+                <span class="evidence-arrow" aria-hidden="true">↗</span>
+              </a>
+            `,
+          )
+          .join("");
+      }
+
+      function cardMarkup(place, region, isInitiallyOpen) {
+        const openAttr = isInitiallyOpen ? " open" : "";
+        return `
+          <details class="atlas-card card--${escapeHtml(place.layout || "wide")}" style="--accent:${region.accent}"${openAttr}>
+            <div class="card-topbar" aria-hidden="true"></div>
+            <summary class="card-summary">
+              <div class="card-heading">
+                <span class="place-chip">${escapeHtml(region.label)} · 证据旅行</span>
+                <span class="evidence-total">${place.evidence.length} 条证据</span>
+              </div>
+              <h3 class="place-name">${escapeHtml(place.name)}</h3>
+              <p class="place-recommendation">${escapeHtml(place.recommendation)}</p>
+              <div class="fact-grid">
+                <div class="fact-item">
+                  <strong>景色</strong>
+                  <p>${escapeHtml(place.scenery)}</p>
+                </div>
+                <div class="fact-item">
+                  <strong>漫游</strong>
+                  <p>${escapeHtml(place.roaming)}</p>
+                </div>
+                <div class="fact-item">
+                  <strong>美食</strong>
+                  <p>${escapeHtml(place.food)}</p>
+                </div>
+                <div class="fact-item">
+                  <strong>交通</strong>
+                  <p>${escapeHtml(place.transport)}</p>
+                </div>
+              </div>
+              <div class="card-foot">
+                <div class="crowd-preview">
+                  <strong>五一判断</strong>
+                  <p>${escapeHtml(place.crowdPreview)}</p>
+                </div>
+                <span class="expand-hint">展开证据与注意点</span>
+              </div>
+            </summary>
+            <div class="card-detail">
+              <div class="detail-grid">
+                <div class="detail-block">
+                  <h4>人流判断</h4>
+                  <p>${escapeHtml(place.crowdJudgement)}</p>
+                </div>
+                <div class="detail-block">
+                  <h4>注意点</h4>
+                  <p>${escapeHtml(place.cautions)}</p>
+                </div>
+              </div>
+              <div class="evidence-panel">
+                <div class="evidence-title">
+                  <h4>证据支持 / Click Through</h4>
+                  <span>点击后新标签页跳转到小红书原始笔记</span>
+                </div>
+                <div class="evidence-list">
+                  ${evidenceMarkup(place.evidence)}
+                </div>
+              </div>
+            </div>
+          </details>
+        `;
+      }
+
+      function renderAtlas() {
+        const root = document.getElementById("atlasRoot");
+        root.innerHTML = atlasData.regions
+          .map((region, regionIndex) => {
+            const cards = region.places
+              .map((place, placeIndex) => cardMarkup(place, region, regionIndex === 0 && placeIndex === 0))
+              .join("");
+
+            return `
+              <section class="region-section reveal reveal-delay-${Math.min(regionIndex + 1, 4)}" id="region-${escapeHtml(region.id)}" style="--accent:${region.accent}">
+                <div class="section-head">
+                  <span class="section-index">${String(regionIndex + 1).padStart(2, "0")}</span>
+                  <div>
+                    <div class="section-kicker">Region Atlas / ${region.places.length} places</div>
+                    <h2 class="section-title">${escapeHtml(region.label)}</h2>
+                  </div>
+                  <p class="section-note">${escapeHtml(region.note)}</p>
+                </div>
+                <div class="card-grid">
+                  ${cards}
+                </div>
+              </section>
+            `;
+          })
+          .join("");
+      }
+
+      function bindExclusiveDetails() {
+        const detailsList = [...document.querySelectorAll(".atlas-card")];
+        detailsList.forEach((item) => {
+          item.addEventListener("toggle", () => {
+            if (!item.open) {
+              return;
+            }
+            detailsList.forEach((other) => {
+              if (other !== item) {
+                other.open = false;
+              }
+            });
+          });
+        });
+      }
+
+      renderMetrics();
+      renderRegionNav();
+      renderAtlas();
+      bindExclusiveDetails();
+    </script>
+  </body>
+</html>
